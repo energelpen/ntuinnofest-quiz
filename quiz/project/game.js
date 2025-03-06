@@ -2,13 +2,11 @@ import { foodItems, beneficiaries } from './data.js';
 
 class Game {
   constructor() {
-    // Game state
     this.score = 0;
     this.timeLeft = 60;
     this.timer = null;
-    this.gameState = 'start'; // 'start', 'playing', 'end'
+    this.gameState = 'start';
 
-    // DOM elements
     this.startScreen = document.getElementById('start-screen');
     this.gameBoard = document.getElementById('game-board');
     this.endScreen = document.getElementById('end-screen');
@@ -17,111 +15,97 @@ class Game {
     this.finalScoreElement = document.getElementById('final-score');
     this.feedbackElement = document.getElementById('feedback');
 
-    // Event listeners
     document.getElementById('start-button').addEventListener('click', () => this.startGame());
     document.getElementById('play-again-button').addEventListener('click', () => this.startGame());
 
-    // Initialize the game
+    this.selectedFood = null;
+
     this.initializeGame();
   }
 
   initializeGame() {
-    // Initialize food items
     const foodGrid = document.getElementById('food-items');
     foodGrid.innerHTML = foodItems.map(item => `
-      <div class="food-item" draggable="true" data-id="${item.id}">
-        <img src="${item.image}" alt="${item.name}">
-        <p>${item.name}</p>
+      <div class="food-item bg-white p-4 rounded-lg shadow-md cursor-pointer" draggable="true" data-id="${item.id}">
+        <img src="${item.image}" alt="${item.name}" class="w-full h-32 object-cover mb-2 rounded">
+        <p class="text-center">${item.name}</p>
       </div>
     `).join('');
 
-    // Initialize beneficiaries
     const beneficiariesContainer = document.getElementById('beneficiaries');
     beneficiariesContainer.innerHTML = beneficiaries.map(beneficiary => `
-      <div class="beneficiary" data-type="${beneficiary.type}">
-        <div class="beneficiary-header">
-          ${beneficiary.icon}
-          <h3>${beneficiary.title}</h3>
-        </div>
-        <p class="beneficiary-description">${beneficiary.description}</p>
+      <div class="beneficiary p-4 bg-blue-100 rounded-lg shadow-md" data-type="${beneficiary.type}">
+        <h3 class="text-center font-semibold">${beneficiary.title}</h3>
+        <p class="text-center text-sm">${beneficiary.description}</p>
       </div>
     `).join('');
 
-    // Set up drag and drop
-    this.setupDragAndDrop();
+    this.setupInteractions();
   }
 
-  setupDragAndDrop() {
+  setupInteractions() {
     const foodItems = document.querySelectorAll('.food-item');
     const beneficiaryZones = document.querySelectorAll('.beneficiary');
 
     foodItems.forEach(item => {
       item.addEventListener('dragstart', (e) => {
         e.dataTransfer.setData('text/plain', item.dataset.id);
-        item.classList.add('dragging');
+        item.classList.add('opacity-50');
       });
 
       item.addEventListener('dragend', () => {
-        item.classList.remove('dragging');
+        item.classList.remove('opacity-50');
+      });
+
+      item.addEventListener('click', () => {
+        this.selectedFood = item;
+        this.highlightSelection(item);
       });
     });
 
     beneficiaryZones.forEach(zone => {
       zone.addEventListener('dragover', (e) => {
         e.preventDefault();
-        zone.classList.add('drag-over');
+        zone.classList.add('bg-blue-200');
       });
 
       zone.addEventListener('dragleave', () => {
-        zone.classList.remove('drag-over');
+        zone.classList.remove('bg-blue-200');
       });
 
       zone.addEventListener('drop', (e) => {
         e.preventDefault();
-        zone.classList.remove('drag-over');
-        
+        zone.classList.remove('bg-blue-200');
         const foodId = e.dataTransfer.getData('text/plain');
-        const foodItem = foodItems.find(item => item.dataset.id === foodId);
-        const beneficiaryType = zone.dataset.type;
-        
-        if (foodItem) {
-          this.handleMatch(foodId, beneficiaryType);
+        const foodItem = document.querySelector(`.food-item[data-id="${foodId}"]`);
+        this.handleMatch(foodItem, zone.dataset.type, zone);
+      });
+
+      zone.addEventListener('click', () => {
+        if (this.selectedFood) {
+          this.handleMatch(this.selectedFood, zone.dataset.type, zone);
+          this.selectedFood = null;
         }
       });
     });
   }
 
-  startGame() {
-    this.score = 0;
-    this.timeLeft = 60;
-    this.gameState = 'playing';
-    
-    this.scoreElement.textContent = this.score;
-    this.timeLeftElement.textContent = this.timeLeft;
-    
-    this.showScreen('game-board');
-    
-    if (this.timer) clearInterval(this.timer);
-    this.timer = setInterval(() => this.updateTimer(), 1000);
+  highlightSelection(selected) {
+    document.querySelectorAll('.food-item').forEach(item => item.classList.remove('border-4', 'border-blue-500'));
+    selected.classList.add('border-4', 'border-blue-500');
   }
 
-  updateTimer() {
-    this.timeLeft--;
-    this.timeLeftElement.textContent = this.timeLeft;
-    
-    if (this.timeLeft <= 0) {
-      this.endGame();
-    }
-  }
+  handleMatch(foodItem, beneficiaryType, zone) {
+    const foodData = foodItems.find(item => item.id === foodItem.dataset.id);
+    const isCorrect = foodData.correctBeneficiary === beneficiaryType;
 
-  handleMatch(foodId, beneficiaryType) {
-    const food = foodItems.find(item => item.id === foodId);
-    const isCorrect = food.correctBeneficiary === beneficiaryType;
-    
     if (isCorrect) {
       this.score++;
       this.scoreElement.textContent = this.score;
-      this.showFeedback(food.explanation, true);
+      this.showFeedback(foodData.explanation, true);
+      zone.appendChild(foodItem);
+      foodItem.classList.remove('cursor-pointer');
+      foodItem.classList.add('m-2', 'bg-blue-50', 'shadow-lg');
     } else {
       this.showFeedback('Try again! Consider the specific needs of each group.', false);
     }
@@ -129,12 +113,30 @@ class Game {
 
   showFeedback(message, isCorrect) {
     this.feedbackElement.textContent = message;
-    this.feedbackElement.className = `feedback ${isCorrect ? 'success' : 'error'}`;
+    this.feedbackElement.className = `fixed top-4 left-1/2 transform -translate-x-1/2 p-2 rounded bg-opacity-70 text-white ${isCorrect ? 'bg-green-500' : 'bg-red-500'}`;
     this.feedbackElement.classList.remove('hidden');
-    
     setTimeout(() => {
       this.feedbackElement.classList.add('hidden');
     }, 2000);
+  }
+
+  startGame() {
+    this.score = 0;
+    this.timeLeft = 60;
+    this.gameState = 'playing';
+    this.scoreElement.textContent = this.score;
+    this.timeLeftElement.textContent = this.timeLeft;
+    this.showScreen('game-board');
+    if (this.timer) clearInterval(this.timer);
+    this.timer = setInterval(() => this.updateTimer(), 1000);
+  }
+
+  updateTimer() {
+    this.timeLeft--;
+    this.timeLeftElement.textContent = this.timeLeft;
+    if (this.timeLeft <= 0) {
+      this.endGame();
+    }
   }
 
   endGame() {
@@ -152,7 +154,6 @@ class Game {
   }
 }
 
-// Initialize the game when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   new Game();
 });

@@ -37,9 +37,9 @@ export const foodItems = [
   {
     id: '6',
     name: 'Dried Beans',
-    image: 'https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=800',
+    image: 'https://images.unsplash.com/photo-1519402658968-d0fef0757e9b?w=800',
     correctBeneficiary: 'low-income',
-    explanation: 'Cost-effective protein source with long shelf life.'
+    explanation: 'Affordable protein source with long shelf life.'
   }
 ];
 
@@ -47,19 +47,19 @@ export const beneficiaries = [
   {
     type: 'elderly',
     title: 'Elderly',
-    description: 'Focus: Health-friendly options',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`
+    icon: '👵',
+    description: 'Provide nutritious foods for the elderly population.',
   },
   {
     type: 'children',
-    title: 'Families with Young Children',
-    description: 'Focus: Nutrient-rich & kid-friendly',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/><path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"/></svg>`
+    title: 'Children',
+    icon: '🧒',
+    description: 'Foods for growing children who need vitamins and minerals.',
   },
   {
     type: 'low-income',
-    title: 'Low-Income Families',
-    description: 'Focus: Staple & cost-efficient food',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`
+    title: 'Low Income Families',
+    icon: '💸',
+    description: 'Affordable, nutritious foods for families facing economic hardships.',
   }
 ];

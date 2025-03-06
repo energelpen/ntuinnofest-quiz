@@ -4,58 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SourceFoods Matching Game</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <header class="header">
-      <div class="header-content">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="heart-icon"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-        <h1>SourceFoods</h1>
-      </div>
+  <body class="bg-gray-100 font-sans text-gray-900 flex flex-col items-center min-h-screen">
+    <header class="bg-blue-600 text-white py-4 w-full text-center">
+      <h1 class="text-2xl font-semibold">SourceFoods Matching Game</h1>
     </header>
-
-    <main class="main-content">
-      <!-- Start Screen -->
-      <div id="start-screen" class="screen">
-        <h1>SourceFoods Matching Game</h1>
-        <p>Help distribute food wisely! Match the right food donations to those who need them most.</p>
-        <button id="start-button">Start Game</button>
+    <main class="flex flex-col items-center w-full max-w-3xl px-4 py-6">
+      <div id="start-screen" class="screen text-center">
+        <h1 class="text-xl font-bold mb-4">Help distribute food wisely!</h1>
+        <button id="start-button" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Start Game</button>
       </div>
-
-      <!-- Game Board -->
-      <div id="game-board" class="screen hidden">
-        <div class="game-stats">
-          <div class="score">Score: <span id="score">0</span></div>
-          <div class="timer">Time: <span id="time-left">60</span>s</div>
+      <div id="game-board" class="screen hidden w-full">
+        <div class="flex justify-between w-full text-lg mb-4">
+          <div>Score: <span id="score">0</span></div>
+          <div>Time Left: <span id="time-left">60</span>s</div>
         </div>
-
-        <div class="game-container">
-          <!-- Food Items Section -->
-          <div class="food-section">
-            <h2>Food Donations</h2>
-            <div id="food-items" class="food-grid"></div>
+        <div class="flex flex-col md:flex-row w-full space-y-6 md:space-y-0 md:space-x-6">
+          <div class="w-full md:w-1/2">
+            <h2 class="text-lg mb-2 text-center">Food Donations</h2>
+            <div id="food-items" class="grid grid-cols-2 gap-4"></div>
           </div>
-
-          <!-- Beneficiaries Section -->
-          <div class="beneficiaries-section">
-            <div id="beneficiaries"></div>
+          <div class="w-full md:w-1/2">
+            <h2 class="text-lg mb-2 text-center">Beneficiaries</h2>
+            <div id="beneficiaries" class="space-y-4"></div>
           </div>
         </div>
       </div>
-
-      <!-- End Screen -->
-      <div id="end-screen" class="screen hidden">
-        <h2>Game Over!</h2>
+      <div id="end-screen" class="screen text-center hidden">
+        <h2 class="text-xl font-bold mb-4">Game Over!</h2>
         <p>You made <span id="final-score">0</span> correct matches!</p>
-        <p>Remember these needs when donating food to help those in your community!</p>
-        <button id="play-again-button">Play Again</button>
+        <button id="play-again-button" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition mt-4">Play Again</button>
       </div>
-
-      <!-- Feedback Message -->
-      <div id="feedback" class="feedback hidden"></div>
+      <div id="feedback" class="hidden fixed top-4 left-1/2 transform -translate-x-1/2 p-2 text-center rounded bg-opacity-70 text-white"></div>
     </main>
-
     <script type="module" src="data.js"></script>
     <script type="module" src="game.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.innerWidth <= 768) {
+          document.querySelectorAll(".food-item").forEach(item => {
+            item.innerHTML = `<p class='text-center font-bold'>${item.dataset.name}</p>`;
+            item.classList.add("p-2", "bg-white", "rounded", "shadow-md", "text-sm", "text-center");
+          });
+        }
+      });
+    </script>
   </body>
 </html>
