@@ -6,7 +6,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Ensures footer is at the bottom */
+    justify-content: center; /* Center content vertically */
     align-items: center;
     overflow: hidden;
 }
@@ -15,7 +15,7 @@ body {
 body::before {
     content: "";
     position: fixed;
-    top: 0;
+    top: -10vh; /* Start above the screen */
     left: 0;
     width: 100%;
     height: 100%;
@@ -23,38 +23,17 @@ body::before {
                       url('https://img.icons8.com/ios-filled/50/000000/hamburger.png'), 
                       url('https://img.icons8.com/ios-filled/50/000000/pizza.png');
     background-size: 50px, 60px, 70px;
-    background-repeat: repeat-y;
-    background-position: 10% -10vh, 50% -10vh, 90% -10vh;
+    background-repeat: repeat;
+    background-position: 0 -10vh, 25% -10vh, 50% -10vh;
     animation: falling-food 10s linear infinite;
     opacity: 0.2;
     z-index: -1;
 }
 
-/* Footer */
-footer {
-    padding: 1rem;
-    background-color: #176B87;
-    color: white;
-    font-size: 1rem;
-    text-align: center;
-    width: 100%;
-}
-
 /* Falling Food Animation */
 @keyframes falling-food {
-    0% { background-position: 10% -10vh, 50% -10vh, 90% -10vh; }
-    100% { background-position: 10% 110vh, 50% 110vh, 90% 110vh; }
-}
-
-/* Header */
-header {
-    background-color: #176B87;
-    color: white;
-    padding: 1.2rem;
-    font-size: 1.8rem;
-    font-weight: 600;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    0% { background-position: 0 -10vh, 25% -10vh, 50% -10vh; }
+    100% { background-position: 0 110vh, 25% 110vh, 50% 110vh; }
 }
 
 /* Main Game Section */
@@ -68,7 +47,6 @@ main {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     position: relative;
     z-index: 1;
-    flex-grow: 1; /* Ensures the main content grows to take remaining space */
 }
 
 /* Buttons */
