@@ -17,40 +17,27 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     font-weight: 500;
-    width: 120px;
-    height: 120px;
+    width: 160px;  /* Set the width of the card */
+    height: 160px; /* Set the height of the card */
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     transition: transform 0.2s ease-in-out;
     position: relative;
-    overflow: hidden; /* Ensure no overflow happens */
 }
 
 .food-item img, .beneficiary-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image covers the container without distortion */
-    border-radius: 8px;
+    width: 80px;    /* Fixed size for the image */
+    height: 80px;   /* Fixed size for the image */
+    object-fit: contain; /* Ensure image fits within the box without distortion */
+    margin-bottom: 10px; /* Space between image and text */
 }
 
 .food-item:hover, .beneficiary-item:hover {
     transform: translateY(-5px);
     background: #E0F7F4;
-}
-
-/* Main Game Section */
-main {
-    max-width: 800px;
-    width: 100%;
-    margin-top: 2rem;
-    padding: 2rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    position: relative;
-    z-index: 1;
 }
 
 /* Falling Food Background Animation */
@@ -76,6 +63,19 @@ body::before {
 @keyframes falling-food {
     0% { background-position: 0 -10vh, 25% -10vh, 50% -10vh; }
     100% { background-position: 0 110vh, 25% 110vh, 50% 110vh; }
+}
+
+/* Main Game Section */
+main {
+    max-width: 800px;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 1;
 }
 
 /* Buttons */
@@ -117,9 +117,10 @@ button:hover {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     font-weight: 500;
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -150,4 +151,3 @@ button:hover {
     border-radius: 6px;
     font-size: 1rem;
 }
-
