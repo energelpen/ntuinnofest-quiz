@@ -141,6 +141,32 @@ button:hover {
     scroll-behavior: smooth;
 }
 
+/* Style the progress bar container */
+#progress-bar {
+  width: 100%; /* Full width of its parent container */
+  height: 10px; /* Adjust the height as needed */
+  background-color: #f0f0f0; /* Light gray background */
+  border-radius: 5px; /* Rounded corners */
+  overflow: hidden; /* Ensures the bar doesn't overflow the container */
+  margin-bottom: 16px; /* Space below the progress bar */
+}
+
+/* Style the moving progress bar itself */
+#progress-bar {
+  height: 100%; /* Ensures the bar takes up the full height of its container */
+  background-color: #00bfae; /* Teal color for the progress */
+  transition: width 1s ease-in-out; /* Smooth transition when the width changes */
+}
+
+/* Optional: Styling for the overall game container */
+#game-board {
+  padding: 24px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
 /* Mobile-specific adjustments */
 @media screen and (max-width: 768px) {
     .scroll-container {
