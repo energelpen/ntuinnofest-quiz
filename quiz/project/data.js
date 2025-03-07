@@ -29,15 +29,15 @@ export const foodItems = [
   },
   {
     id: '5',
-    name: 'Canned Fish',
-    image: 'https://images.unsplash.com/photo-1597691424453-c9f4ff4e8f21?w=800',
+    name: 'Sardines',
+    image: 'https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/414649_XL1_20230129.jpg',
     correctBeneficiary: 'elderly',
     explanation: 'High in protein and omega-3, easy to prepare.'
   },
   {
     id: '6',
-    name: 'Dried Beans',
-    image: 'https://images.unsplash.com/photo-1519402658968-d0fef0757e9b?w=800',
+    name: 'Baked Beans',
+    image: 'https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/10829840_XL1_20230310.jpg',
     correctBeneficiary: 'low-income',
     explanation: 'Affordable protein source with long shelf life.'
   }
