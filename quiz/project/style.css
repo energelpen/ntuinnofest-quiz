@@ -25,6 +25,7 @@ body {
     text-align: center;
     transition: transform 0.2s ease-in-out;
     position: relative;
+    overflow: hidden; /* Ensure no overflow happens */
 }
 
 .food-item img, .beneficiary-item img {
@@ -39,6 +40,18 @@ body {
     background: #E0F7F4;
 }
 
+/* Main Game Section */
+main {
+    max-width: 800px;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 1;
+}
 
 /* Falling Food Background Animation */
 body::before {
@@ -63,19 +76,6 @@ body::before {
 @keyframes falling-food {
     0% { background-position: 0 -10vh, 25% -10vh, 50% -10vh; }
     100% { background-position: 0 110vh, 25% 110vh, 50% 110vh; }
-}
-
-/* Main Game Section */
-main {
-    max-width: 800px;
-    width: 100%;
-    margin-top: 2rem;
-    padding: 2rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    position: relative;
-    z-index: 1;
 }
 
 /* Buttons */
