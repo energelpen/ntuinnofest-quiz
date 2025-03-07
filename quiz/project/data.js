@@ -9,7 +9,7 @@ export const foodItems = [
   {
     id: '2',
     name: 'Whole Grain Cereal',
-    image: 'https://images.unsplash.com/photo-1521483756775-c37af386fce9?w=800',
+    image: 'https://www.nestle.com.sg/sites/g/files/pydnoa416/files/Nestum-soy-wholegrain.jpg',
     correctBeneficiary: 'children',
     explanation: 'Nutrient-rich breakfast options support children\'s growth and development.'
   },
