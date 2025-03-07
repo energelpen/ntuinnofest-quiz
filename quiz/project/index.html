@@ -9,14 +9,12 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
   <body class="font-sans text-gray-900 flex flex-col items-center min-h-screen">
-    <!-- Falling Food Animation -->
-    <div class="falling-food" id="falling-food"></div>
-
     <header class="bg-teal-600 text-white py-5 w-full text-center shadow-lg">
       <h1 class="text-3xl font-semibold tracking-wide flex items-center justify-center gap-2">
         <i class="fas fa-utensils text-xl"></i> SourceFoods Matching Game
       </h1>
     </header>
+    
     <main class="flex flex-col items-center w-full max-w-3xl px-6 py-8 relative z-10">
       <!-- Start Screen -->
       <div id="start-screen" class="screen text-center">
@@ -42,11 +40,15 @@
             <div
               id="food-items"
               class="grid grid-cols-2 gap-4 p-4 bg-gray-100 rounded-lg shadow-inner"
-            ></div>
+            >
+              <!-- Food items will be dynamically inserted here -->
+            </div>
           </div>
           <div class="w-full md:w-1/2">
             <h2 class="text-lg font-semibold mb-2 text-center">Beneficiaries <i class="fas fa-users"></i></h2>
-            <div id="beneficiaries" class="space-y-4 p-4 bg-gray-100 rounded-lg shadow-inner"></div>
+            <div id="beneficiaries" class="space-y-4 p-4 bg-gray-100 rounded-lg shadow-inner">
+              <!-- Beneficiaries will be dynamically inserted here -->
+            </div>
           </div>
         </div>
         <div class="text-center mt-6">
@@ -76,26 +78,5 @@
     </main>
     <script type="module" src="data.js"></script>
     <script type="module" src="game.js"></script>
-    <script>
-      // Randomize falling food items
-      const fallingFood = document.getElementById('falling-food');
-      const foodImages = [
-        'https://img.icons8.com/ios-filled/50/000000/apple.png',
-        'https://img.icons8.com/ios-filled/50/000000/hamburger.png',
-        'https://img.icons8.com/ios-filled/50/000000/pizza.png'
-      ];
-
-      function createFallingFood() {
-        const randomFood = foodImages[Math.floor(Math.random() * foodImages.length)];
-        const foodItem = document.createElement('img');
-        foodItem.src = randomFood;
-        foodItem.style.left = `${Math.random() * window.innerWidth}px`;
-        foodItem.style.animationDuration = `${Math.random() * 4 + 5}s`;
-        fallingFood.appendChild(foodItem);
-      }
-
-      setInterval(createFallingFood, 1000);
-    </script>
   </body>
 </html>
-
