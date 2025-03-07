@@ -1,12 +1,12 @@
 body {
-    background-color: #D2F2EC;
+    background-color: #d2f2ec;
     font-family: 'Poppins', sans-serif;
-    color: #2D2D2D;
+    color: #2d2d2d;
     text-align: center;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center content vertically */
+    justify-content: center;
     align-items: center;
     overflow: hidden;
 }
@@ -15,7 +15,7 @@ body {
 body::before {
     content: "";
     position: fixed;
-    top: -10vh; /* Start above the screen */
+    top: -10vh;
     left: 0;
     width: 100%;
     height: 100%;
@@ -51,7 +51,7 @@ main {
 
 /* Buttons */
 button {
-    background-color: #176B87;
+    background-color: #176b87;
     color: white;
     font-size: 1rem;
     padding: 10px 20px;
@@ -63,7 +63,7 @@ button {
 }
 
 button:hover {
-    background-color: #114D63;
+    background-color: #114d63;
     transform: scale(1.05);
 }
 
@@ -83,7 +83,7 @@ button:hover {
 }
 
 .food-item, .beneficiary-item {
-    background: #FAFAFA;
+    background: #fafafa;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -99,7 +99,7 @@ button:hover {
 
 .food-item:hover, .beneficiary-item:hover {
     transform: translateY(-5px);
-    background: #E0F7F4;
+    background: #e0f7f4;
 }
 
 /* Game Over Screen */
@@ -121,3 +121,4 @@ button:hover {
     border-radius: 6px;
     font-size: 1rem;
 }
+
