@@ -145,7 +145,7 @@ button:hover {
 #progress-bar {
   width: 100%; /* Full width of the container */
   height: 10px; /* Adjust the height as needed */
-  background-color: #e0e0e0; /* Light gray background for the bar */
+  background-color: #00bfae; /* Light gray background for the bar */
   border-radius: 5px; /* Rounded corners */
   overflow: hidden; /* Prevent the inner bar from overflowing */
   margin-bottom: 16px; /* Space below the progress bar */
