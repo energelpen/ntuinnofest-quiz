@@ -141,22 +141,24 @@ button:hover {
     scroll-behavior: smooth;
 }
 
-/* Style the progress bar container */
+/* Style the progress bar container (time bar) */
 #progress-bar {
-  width: 100%; /* Full width of its parent container */
+  width: 100%; /* Full width of the container */
   height: 10px; /* Adjust the height as needed */
-  background-color: #f0f0f0; /* Light gray background */
+  background-color: #e0e0e0; /* Light gray background for the bar */
   border-radius: 5px; /* Rounded corners */
-  overflow: hidden; /* Ensures the bar doesn't overflow the container */
+  overflow: hidden; /* Prevent the inner bar from overflowing */
   margin-bottom: 16px; /* Space below the progress bar */
 }
 
-/* Style the moving progress bar itself */
-#progress-bar {
-  height: 100%; /* Ensures the bar takes up the full height of its container */
-  background-color: #00bfae; /* Teal color for the progress */
-  transition: width 1s ease-in-out; /* Smooth transition when the width changes */
+/* The inner moving time bar */
+#progress-bar-inner {
+  width: 100%; /* Starts with full width */
+  height: 100%; /* Fills the container height */
+  background-color: #00bfae; /* Teal color for the time progress */
+  transition: width 1s linear; /* Smooth transition for width change */
 }
+
 
 /* Optional: Styling for the overall game container */
 #game-board {
