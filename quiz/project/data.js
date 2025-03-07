@@ -9,7 +9,7 @@ export const foodItems = [
   {
     id: '2',
     name: 'Whole Grain Cereal',
-    image: 'https://i5.walmartimages.com/seo/Oatmeal-Crisp-Heart-Healthy-Cereal-High-Fiber-Cereal-Made-with-Whole-Grain-19-7-oz_7fd0c7ad-8fc1-431a-b0e8-f3f384162221.e2b9c3bce6e5f5b2e42b574606e978fa.jpeg',
+    image: 'https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/414649_XL1_20230129.jpg',
     correctBeneficiary: 'children',
     explanation: 'Nutrient-rich breakfast options support children\'s growth and development.'
   },
