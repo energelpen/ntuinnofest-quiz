@@ -7,39 +7,6 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <style>
-      body {
-        background-color: #d2f2ec;
-        font-family: 'Roboto', sans-serif;
-        position: relative;
-        overflow: hidden; /* Prevents food from overflowing */
-      }
-
-      .falling-food {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: -1;
-      }
-
-      .falling-food img {
-        position: absolute;
-        width: 50px;
-        animation: fall 5s infinite linear;
-      }
-
-      @keyframes fall {
-        to {
-          transform: translateY(100vh); /* Makes the food fall down the screen */
-        }
-      }
-      
-      /* Randomly position the food items */
-      .food-item {
-        animation: fall 5s infinite linear;
-      }
-    </style>
   </head>
   <body class="font-sans text-gray-900 flex flex-col items-center min-h-screen">
     <!-- Falling Food Animation -->
@@ -122,21 +89,13 @@
         const randomFood = foodImages[Math.floor(Math.random() * foodImages.length)];
         const foodItem = document.createElement('img');
         foodItem.src = randomFood;
-        foodItem.classList.add('food-item');
-        
-        // Randomize starting position
-        foodItem.style.left = `${Math.random() * 100}vw`; // Random position along the width
-        foodItem.style.animationDuration = `${Math.random() * 5 + 5}s`; // Random duration
-
+        foodItem.style.left = `${Math.random() * window.innerWidth}px`;
+        foodItem.style.animationDuration = `${Math.random() * 4 + 5}s`;
         fallingFood.appendChild(foodItem);
-
-        // Remove food after animation completes
-        foodItem.addEventListener('animationend', () => {
-          foodItem.remove();
-        });
       }
 
-      setInterval(createFallingFood, 500); // Generate new falling food every 500ms
+      setInterval(createFallingFood, 1000);
     </script>
   </body>
 </html>
+
