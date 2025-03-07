@@ -8,7 +8,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow-x: hidden; /* Allow horizontal scrolling but prevent unwanted overflow */
 }
 
 .food-item, .beneficiary-item {
@@ -179,4 +179,5 @@ button:hover {
         max-height: 80vh;  /* Ensure larger scrollable area on desktop */
     }
 }
+
 
