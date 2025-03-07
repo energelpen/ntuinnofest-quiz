@@ -20,6 +20,7 @@ body {
     left: 0;
     right: 0;
     z-index: -1;
+    pointer-events: none; /* Prevents interaction with falling food */
 }
 
 .falling-food img {
@@ -34,7 +35,7 @@ body {
     }
 }
 
-/* Food Items & Beneficiaries */
+/* Food Items & Beneficiaries - Prevent Movement */
 .food-item, .beneficiary-item {
     background: #FAFAFA;
     padding: 15px;
@@ -50,8 +51,10 @@ body {
     text-align: center;
     transition: transform 0.2s ease-in-out;
     position: relative;
+    z-index: 1; /* Ensures food donation cards are on top */
 }
 
+/* Prevent Hover Movement for Food Donation Cards */
 .food-item img, .beneficiary-item img {
     width: 100px;
     height: 100px;
@@ -60,7 +63,7 @@ body {
 }
 
 .food-item:hover, .beneficiary-item:hover {
-    transform: translateY(-5px);
+    transform: none; /* Disable hover movement */
     background: #E0F7F4;
 }
 
@@ -110,6 +113,7 @@ button:hover {
     gap: 20px;
 }
 
+/* Ensure Food Items Don't Move */
 .food-item, .beneficiary-item {
     background: #fafafa;
     padding: 15px;
@@ -123,12 +127,7 @@ button:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    transition: transform 0.2s ease-in-out;
-}
-
-.food-item:hover, .beneficiary-item:hover {
-    transform: translateY(-5px);
-    background: #e0f7f4;
+    transition: none; /* Disable hover animation */
 }
 
 /* Game Over Screen */
@@ -178,3 +177,4 @@ button:hover {
         max-height: 80vh;
     }
 }
+
