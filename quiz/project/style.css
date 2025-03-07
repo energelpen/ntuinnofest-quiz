@@ -151,3 +151,32 @@ button:hover {
     border-radius: 6px;
     font-size: 1rem;
 }
+
+/* Main container for scrolling */
+.scroll-container {
+    max-height: 80vh;  /* Set the max height to 80% of the viewport height */
+    overflow-y: auto;  /* Enable vertical scrolling */
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Ensure smooth scrolling */
+.scroll-container {
+    scroll-behavior: smooth;
+}
+
+/* Mobile-specific adjustments */
+@media screen and (max-width: 768px) {
+    .scroll-container {
+        max-height: 60vh;  /* Adjust max height on mobile for better experience */
+    }
+}
+
+/* Desktop-specific adjustments */
+@media screen and (min-width: 769px) {
+    .scroll-container {
+        max-height: 80vh;  /* Ensure larger scrollable area on desktop */
+    }
+}
+
